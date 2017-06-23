@@ -1,0 +1,124 @@
+h1 {
+font-size: 40px;
+}
+
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.fiilis{
+-webkit-appearance: none;
+background-color: Transparent;
+border: none;
+padding: 0;
+margin: 0;
+}
+
+#tulokset{
+height:70px;}
+
+#tyhjatila{
+height:100px;
+}
+
+#sininenboxi{
+	background-color:rgba(0,0,255,1); /* Laatikon taustalle väri ja läpinäkyvyys */
+padding:15px;
+border: 1px solid black; /* Reunuksen väri */
+display: block;
+}
+
+
+table {
+	
+	border-collapse: separate;
+	
+	font-size: 12px;
+	line-height: 24px;
+	margin: 30px auto;
+	text-align: center;
+	width: 350px;
+}
+
+.profiili table {
+	text-align: left;
+	width:100%;
+	border-style: solid;
+	border-width: 1px;
+}	
+
+th {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+	border-left: 1px solid #555;
+	border-right: 1px solid #999;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #999;
+	box-shadow: inset 0 1px 0 #999;
+	color: #fff;
+  font-weight: bold;
+	padding: 10px 15px;
+	position: relative;
+	text-shadow: 0 1px 0 #000;	
+}
+
+td {
+
+	padding: 10px 15px;
+	position: relative;
+	transition: all 300ms;
+}
+
+tr {
+	background: url(http://jackrugile.com/images/misc/noise-diagonal.png);	
+}
+
+.text-right
+{
+    text-align: right !important;
+}
+
+.text-center
+{
+    text-align: center !important;
+}
+
+.text-left
+{
+    text-align: left !important;
+}
+.profiili{
+	width:300px;
+
+}
+
+.button {
+    background-color: #008CBA; 
+    border: 2px solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+     -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+}
+
+.button:hover {
+    background-color: #0099cc;
+    color: white;
+    border: 2px solid #008CBA;
+}
+
+
+.testinappula {
+	
+	
+}	
+	
+	
+

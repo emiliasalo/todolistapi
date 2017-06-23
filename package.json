@@ -1,0 +1,25 @@
+{
+  "name": "todolistapi",
+  "version": "1.0.0",
+  "description": "RESTful todolistapi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit1",
+    "success_url": "/index",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "RESTful"
+  ],
+  "author": "Leo Jappinen",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mocha": "^3.4.2",
+    "mongoose": "^4.10.8"
+  }
+}
