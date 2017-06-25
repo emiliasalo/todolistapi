@@ -33,6 +33,10 @@ var express = require('express'),
 	app.get('/', function(req, res){
 		res.sendFile(__dirname + '/index.html');
 	});
+	//direct to results
+	app.get('/results', function(req, res){
+		res.sendFile(__dirname + '/results.html');
+	});
 	
 app.listen(port);
 
