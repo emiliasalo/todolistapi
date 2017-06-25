@@ -7,7 +7,7 @@ font-size: 40px;
   width: 100%;
 }
 
-.fiilis{
+.feeling{
 -webkit-appearance: none;
 background-color: Transparent;
 border: none;
@@ -15,17 +15,17 @@ padding: 0;
 margin: 0;
 }
 
-#tulokset{
+#results{
 height:70px;}
 
-#tyhjatila{
+#emptyspace{
 height:100px;
 }
 
-#sininenboxi{
-	background-color:rgba(0,0,255,1); /* Laatikon taustalle väri ja läpinäkyvyys */
+#bluebox{
+background-color:rgba(0,0,255,1); 
 padding:15px;
-border: 1px solid black; /* Reunuksen väri */
+border: 1px solid black; 
 display: block;
 }
 
@@ -87,7 +87,7 @@ tr {
 {
     text-align: left !important;
 }
-.profiili{
+.profile{
 	width:300px;
 
 }
@@ -115,7 +115,7 @@ tr {
 }
 
 
-.testinappula {
+.testbutton {
 	
 	
 }	

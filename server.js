@@ -2,7 +2,7 @@ var express = require('express'),
   	app = express(),
   	port = process.env.PORT || 3000;
 	mongoose = require('mongoose'),
-	Vote = require('./api/models/todoListModel'),
+	Vote = require('./api/models/smileyModel'),
 	bodyParser = require('body-parser');
 	
 	// ES6 Promises
@@ -26,7 +26,7 @@ var express = require('express'),
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
 	
-	var routes = require('./api/routes/todoListRoutes');
+	var routes = require('./api/routes/smileyRoutes');
 	routes(app);
 	
 	//direct to index

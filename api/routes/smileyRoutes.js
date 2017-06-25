@@ -1,9 +1,9 @@
 'use strict';
 module.exports = function(app) {
-  var todoList = require('../controllers/todoListController');
+  var todoList = require('../controllers/smileyController');
 
 
-  // todoList Routes
+  //Routes
   app.route('/votes')
     .get(todoList.list_all_votes)
     .post(todoList.create_a_vote);
