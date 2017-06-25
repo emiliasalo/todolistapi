@@ -30,7 +30,7 @@
 		</div>
 		
 		<div id="emptyspace">
-			<h1 id="thanks" class="text-center">Give grade!</h1>
+			<h1 id="thanks" class="text-center">Give a grade!</h1>
 		</div>
 		<br>
 
@@ -253,9 +253,9 @@ $(document).ready(function() {
 					$("#result").html(
 							"Grades given: " + votes
 									+ "<br><br> Average of the grades: "
-									+ average + "<br> <br> " + points1
-									+ "<br>" + points2 + "<br>" + points3
-									+ "<br>" + points4 + "<br>" + points5);
+									+ average + "<br> <br> Grade 1 votes: " + points1
+									+ "<br> Grade 2 votes: " + points2 + "<br> Grade 3 votes: " + points3
+									+ "<br> Grade 4 votes: " + points4 + "<br> Grade 5 votes: " + points5);
 
 					$("#result").hide();
 
@@ -320,15 +320,15 @@ $(document).ready(function() {
 																+ votes
 																+ "<br><br> Average of the grades: "
 																+ average
-																+ "<br> <br> "
+																+ "<br> <br> Grade 1 votes: "
 																+ points1
-																+ "<br>"
+																+ "<br> Grade 2 votes: "
 																+ points2
-																+ "<br>"
+																+ "<br> Grade 3 votes: "
 																+ points3
-																+ "<br>"
+																+ "<br> Grade 4 votes: "
 																+ points4
-																+ "<br>"
+																+ "<br> Grade 5 votes: "
 																+ points5);
 										setTimeout(changeText, 1000);
 
@@ -361,12 +361,55 @@ $(document).ready(function() {
 							$("#results").text("Show results");
 						} else {
 							$("#result").show();
-							esilla = 1;
+							shown = 1;
 							$("#results").text("Hide results");
 						}
 
 					});
 
+					//nollaa javascript muuttujien arvot ja keksit
+					$('#reset')
+							.click(
+									function() {
+
+										
+										setCookie("averagecookie", "", 365);
+										setCookie("votescookie", "", 365);
+										setCookie("points1cookie", "", 365);
+										setCookie("points2cookie", "", 365);
+										setCookie("points3cookie", "", 365);
+										setCookie("points4cookie", "", 365);
+										setCookie("points5cookie", "", 365);
+										setCookie("allpointscookie", "",
+												365);
+
+										average = getCookie("averagecookie");
+										votes = getCookie("votescookie");
+										points1 = getCookie("points1cookie");
+										points2 = getCookie("points2cookie");
+										points3 = getCookie("points3cookie");
+										points4 = getCookie("points4cookie");
+										points5 = getCookie("points5cookie");
+										allpoints = getCookie("allpointscookie");
+										
+
+										$("#result")
+												.html(
+														"Grades given: "
+														+ votes
+														+ "<br><br> Average of the grades: "
+														+ average
+														+ "<br> <br> Grade 1 votes: "
+														+ points1
+														+ "<br> Grade 2 votes: "
+														+ points2
+														+ "<br> Grade 3 votes: "
+														+ points3
+														+ "<br> Grade 4 votes: "
+														+ points4
+														+ "<br> Grade 5 votes: "
+														+ points5);
+									});
 					
 
 					// sets cookie
