@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Artist databank</title>
+	<title>Votes databank</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/api/resources/styles/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.js"></script>
@@ -25,11 +26,11 @@
 
 
 		<!-- Main component for a primary marketing message or call to action -->
-	<div id="tyhjatila">
+	<div id="emptyspace">
 		</div>
 		
-		<div id="tyhjatila">
-			<h1 id="kiitos" class="text-center">Anna fiilis!</h1>
+		<div id="emptyspace">
+			<h1 id="thanks" class="text-center">Give grade!</h1>
 		</div>
 		<br>
 
@@ -37,38 +38,38 @@
 
 		<div class="row">
 			<div class="col-md-2 col-xs-2 col-md-offset-1 col-xs-offset-1">
-				<button class="btn-block fiilis" value="1">
-					<img src="" class="img-responsive"
+				<button class="btn-block feeling" value="1">
+					<img src="api/resources/images/1.png" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
-				<button class="btn-block fiilis" value="2">
-					<img src="" class="img-responsive"
+				<button class="btn-block feeling" value="2">
+					<img src="api/resources/images/2.png" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
-				<button class="btn-block fiilis" value="3">
-					<img src="" class="img-responsive"
+				<button class="btn-block feeling" value="3">
+					<img src="api/resources/images/3.png" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
-				<button class="btn-block fiilis" value="4">
-					<img src="" class="img-responsive"
+				<button class="btn-block feeling" value="4">
+					<img src="api/resources/images/4.png" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
-				<button class="btn-block fiilis" value="5">
-					<img src="" class="img-responsive"
+				<button class="btn-block feeling" value="5">
+					<img src="api/resources/images/5.png" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 		</div>
-		<div id="tyhjatila">
-			<div class="row" id="numerorivi">
+		<div id="emptyspace">
+			<div class="row" id="numberrow">
 				<div class="col-md-2 col-xs-2 col-md-offset-1 col-xs-offset-1">
 					<h3 class="text-center">1</h3>
 				</div>
@@ -92,21 +93,21 @@
 
 		<div class="row">
 			<div class="col-md-6 col-xs-10 col-md-offset-3 col-xs-offset-1">
-				<button id="tulokset" class="btn btn-primary btn-block">Näytä tulokset</button>
+				<button id="results" class="btn btn-primary btn-block">Show results</button>
 
-				<h2 id="tulos" class="text-center"></h2>
+				<h2 id="result" class="text-center"></h2>
 
 				<br> <br> <br> <br> <br> <br> <br>
 				<br> <br> <br> <br> <br> <br> <br>
 				<br>
 				
-		<button class="btn btn-success btn-block" id="lisaa">Lisää tulokset tietokantaan</button>
+		<button class="btn btn-success btn-block" id="add">Add results to database</button>
 			<br><br>
-			<h1 class="text-center"><a href="tulokset">Takaisin tulossivulle</a></h1><br><br>
-				<button id="nollaa" class="btn btn-primary btn-block">Nollaa</button>
+			<h1 class="text-center"><a href="results">Back to results</a></h1><br><br>
+				<button id="reset" class="btn btn-primary btn-block">Reset</button>
 			</div>
 			</div>
-			<!-- row päättyy -->
+			<!-- row ends -->
 
 
 
@@ -126,13 +127,12 @@
   Smile3 <input id="smile3field" type="text" " value="">
   Smile4 <input id="smile4field" type="text" " value="">
   Smile5 <input id="smile5field" type="text" " value="">
-
  
 </form>  
 				<button id=buttoninsert type="button">Click Me!</button>
 		
 	
-	<table class="table" id="artisttable">
+	<table class="table" id="smileytable">
 					<thead>
 						<tr>
 							
@@ -151,16 +151,11 @@
 		
 </body>
 <script>
-
-
-
 //Make values that can be called
 var pageurl = "/votes";
 var data = "";
-
 //adds values to tbody
 $.getJSON(pageurl, function(result) {
-
 	$.each(result, function(i, field) {
 		// artistlist.push(field);
 		console.log('smile1: ' + field.smile1 + ' smile2: ' + field.smile2 + ' smile3: '
@@ -224,164 +219,164 @@ $("#buttoninsert").click(function() {
 
 $(document).ready(function() {
 	
-					var nimi = "";
-					var kysy = 0;
-					kysy = getCookie("kysykeksi");
+					var name = "";
+					var ask = 0;
+					ask = getCookie("askcookie");
 
-					if (kysy != 1) {
-						var nimi = prompt("Name of the class:", "");
-						setCookie("kysykeksi", 1, 365);
-						setCookie("nimikeksi", nimi, 365);
+					if (ask != 1) {
+						var name = prompt("Name of the class:", "");
+						setCookie("askcookie", 1, 365);
+						setCookie("namecookie", name, 365);
 					}
 
-					// alustetaan alkuarvot
-					var yhteispisteet = 0;
-					var aanet = 0;
-					var keskiarvo = 0;
-					var esilla = 0;
-					var pisteet1 = 0;
-					var pisteet2 = 0;
-					var pisteet3 = 0;
-					var pisteet4 = 0;
-					var pisteet5 = 0;
-					// jos arvoja on kekseissä, asetetaan ne muuttujiin
-					keskiarvo = getCookie("keskiarvokeksi");
-					pisteet1 = getCookie("pisteet1keksi");
-					pisteet2 = getCookie("pisteet2keksi");
-					pisteet3 = getCookie("pisteet3keksi");
-					pisteet4 = getCookie("pisteet4keksi");
-					pisteet5 = getCookie("pisteet5keksi");
-					yhteispisteet = getCookie("yhteispisteetkeksi");
-					aanet = getCookie("aanetkeksi");
-					nimi = getCookie("nimikeksi");
+					// initial values
+					var allpoints = 0;
+					var votes = 0;
+					var average = 0;
+					var shown = 0;
+					var points1 = 0;
+					var points2 = 0;
+					var points3 = 0;
+					var points4 = 0;
+					var points5 = 0;
+					// if cookies got values, set them to variables
+					average = getCookie("averagecookie");
+					points1 = getCookie("points1cookie");
+					points2 = getCookie("points2cookie");
+					points3 = getCookie("points3cookie");
+					points4 = getCookie("points4cookie");
+					points5 = getCookie("points5cookie");
+					allpoints = getCookie("allpointscookie");
+					votes = getCookie("votescookie");
+					name = getCookie("namecookie");
 
-					$("#tulos").html(
-							"Fiiliksiä annettu: " + aanet
-									+ "<br><br> Fiiliskeskiarvo on: "
-									+ keskiarvo + "<br> <br> " + pisteet1
-									+ "<br>" + pisteet2 + "<br>" + pisteet3
-									+ "<br>" + pisteet4 + "<br>" + pisteet5);
+					$("#result").html(
+							"Grades given: " + votes
+									+ "<br><br> Average of the grades: "
+									+ average + "<br> <br> " + points1
+									+ "<br>" + points2 + "<br>" + points3
+									+ "<br>" + points4 + "<br>" + points5);
 
-					$("#tulos").hide();
+					$("#result").hide();
 
-					// lisää fiiliksen sen perusteella, mikä buttonin value on
-					$('.fiilis')
+					// adds feeling, depending on the value of the button
+					$('.feeling')
 							.click(
 									function() {
 
-										$('.fiilis').prop("disabled", true);
+										$('.feeling').prop("disabled", true);
 
-										yhteispisteet = Number(yhteispisteet)
+										allpoints = Number(allpoints)
 												+ Number($(this).val());
 
 										if (Number($(this).val()) === 1) {
-											pisteet1 = Number(pisteet1) + 1;
+											points1 = Number(points1) + 1;
 
 										} else if (Number($(this).val()) === 2) {
-											pisteet2 = Number(pisteet2) + 1;
+											points2 = Number(points2) + 1;
 										} else if (Number($(this).val()) === 3) {
-											pisteet3 = Number(pisteet3) + 1;
+											points3 = Number(points3) + 1;
 										} else if (Number($(this).val()) === 4) {
-											pisteet4 = Number(pisteet4) + 1;
+											points4 = Number(points4) + 1;
 										} else if (Number($(this).val()) === 5) {
-											pisteet5 = Number(pisteet5) + 1;
+											points5 = Number(points5) + 1;
 										}
-										$(".fiilis").hide();
-										$("#numerorivi").hide();
+										$(".feeling").hide();
+										$("#numberrow").hide();
 										$(this).show();
 
-										aanet = Number(aanet) + 1
+										votes = Number(votes) + 1
 
-										$("#kiitos").html("Kiitos!").fadeIn(
+										$("#thanks").html("Thank you!").fadeIn(
 												"fast");
-										$("#kiitos").css({
+										$("#thanks").css({
 											"font-weight" : "bold",
 											"font-size" : "80px",
 											"color" : "red"
 										});
 
-										keskiarvo = yhteispisteet / aanet;
-										keskiarvo = keskiarvo.toFixed(2);
+										average = allpoints / votes;
+										average = average.toFixed(2);
 
-										setCookie("keskiarvokeksi", keskiarvo,
+										setCookie("averagecookie", average,
 												365);
-										setCookie("aanetkeksi", aanet, 365);
-										setCookie("pisteet1keksi", pisteet1,
+										setCookie("votescookie", votes, 365);
+										setCookie("points1cookie", points1,
 												365);
-										setCookie("pisteet2keksi", pisteet2,
+										setCookie("points2cookie", points2,
 												365);
-										setCookie("pisteet3keksi", pisteet3,
+										setCookie("points3cookie", points3,
 												365);
-										setCookie("pisteet4keksi", pisteet4,
+										setCookie("points4cookie", points4,
 												365);
-										setCookie("pisteet5keksi", pisteet5,
+										setCookie("points5cookie", points5,
 												365);
-										setCookie("yhteispisteetkeksi",
-												yhteispisteet, 365);
+										setCookie("allpointscookie",
+												allpoints, 365);
 
-										$("#tulos")
+										$("#result")
 												.html(
-														"Fiiliksiä annettu: "
-																+ aanet
-																+ "<br><br> Fiiliskeskiarvo on: "
-																+ keskiarvo
+														"Grades given: "
+																+ votes
+																+ "<br><br> Average of the grades: "
+																+ average
 																+ "<br> <br> "
-																+ pisteet1
+																+ points1
 																+ "<br>"
-																+ pisteet2
+																+ points2
 																+ "<br>"
-																+ pisteet3
+																+ points3
 																+ "<br>"
-																+ pisteet4
+																+ points4
 																+ "<br>"
-																+ pisteet5);
-										setTimeout(vaihdaTeksti, 1000);
+																+ points5);
+										setTimeout(changeText, 1000);
 
 									});
 
-					// vilauttaa kiitostekstin ja palauttaa saman tekstin
-					// takaisin
-					function vaihdaTeksti() {
+					// shows "thank you"-text and returns the original text
+					// back
+					function changeText() {
 
-						$("#kiitos").fadeOut(function() {
-							$(this).text("Anna fiilis!").fadeIn("fast");
-							$("#kiitos").css({
+						$("#thanks").fadeOut(function() {
+							$(this).text("Give grade!").fadeIn("fast");
+							$("#thanks").css({
 								"font-weight" : "normal",
 								"font-size" : "40px",
 								"color" : "black"
 							});
-							$('.fiilis').prop("disabled", false);
+							$('.feeling').prop("disabled", false);
 						});
-						$(".fiilis").fadeIn("slow");
-						$("#numerorivi").fadeIn("slow");
+						$(".feeling").fadeIn("slow");
+						$("#numberrow").fadeIn("slow");
 
 					}
 
-					// näyttää muuttujien arvot sivulla
-					$('#tulokset').click(function() {
+					// shows results on page
+					$('#results').click(function() {
 
-						if (esilla == 1) {
-							$("#tulos").hide();
-							esilla = 0;
-							$("#tulokset").text("Näytä tulokset");
+						if (shown == 1) {
+							$("#result").hide();
+							shown = 0;
+							$("#results").text("Show results");
 						} else {
-							$("#tulos").show();
+							$("#result").show();
 							esilla = 1;
-							$("#tulokset").text("Piilota tulokset");
+							$("#results").text("Hide results");
 						}
 
 					});
 
 					
 
-					// asettaa keksin
+					// sets cookie
 					function setCookie(cname, cvalue, exdays) {
 						var d = new Date();
 						d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 						var expires = "expires=" + d.toUTCString();
 						document.cookie = cname + "=" + cvalue + "; " + expires;
 					}
-					// hakee keksin
+					// gets cookie
 					function getCookie(cname) {
 						var name = cname + "=";
 						var ca = document.cookie.split(';');
@@ -394,8 +389,8 @@ $(document).ready(function() {
 						}
 						return "";
 					}
-					// lisää fiiliksen tietokantaan
-					$('#lisaa').click(
+					// add grade to database
+					$('#add').click(
 							function() {
 								var date = new Date();
 								var pvm = date.getFullYear() + "-"
@@ -403,19 +398,19 @@ $(document).ready(function() {
 										+ date.getDate();
 
 								var json = {
-									"fiilis1" : pisteet1,
-									"fiilis2" : pisteet2,
-									"fiilis3" : pisteet3,
-									"fiilis4" : pisteet4,
-									"fiilis5" : pisteet5,
-									"keskiarvo" : keskiarvo,
-									"aanet" : aanet,
-									"nimi" : nimi,
+									"feeling1" : points1,
+									"feeling2" : points2,
+									"feeling3" : points3,
+									"feeling4" : points4,
+									"feeling5" : points5,
+									"average" : average,
+									"votes" : votes,
+									"name" : name,
 									"pvm" : pvm
 								};
 
 								$.ajax({
-									url : "lisaatulos",
+									url : "/votes",
 									data : JSON.stringify(json),
 									type : "POST",
 
@@ -426,11 +421,12 @@ $(document).ready(function() {
 												"application/json");
 									}
 								});
-
-								alert("tulokset lisätty tietokantaan");
+								console.log('Success: ' + "data added");
+								console.log(JSON.stringify(data));
+								alert("results added to database");
 							});
 
-				}); // document.ready lopetus
+				}); // document.ready ends
 
 
 
