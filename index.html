@@ -5,7 +5,7 @@
 	<title>Votes databank</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/api/resources/styles/style.css">
+	<link rel="stylesheet" type="text/css" href="/api/resources/styles/tyyli.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.js"></script>
@@ -39,31 +39,31 @@
 		<div class="row">
 			<div class="col-md-2 col-xs-2 col-md-offset-1 col-xs-offset-1">
 				<button class="btn-block feeling" value="1">
-					<img src="api/resources/images/1.png" class="img-responsive"
+					<img src="" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
 				<button class="btn-block feeling" value="2">
-					<img src="api/resources/images/2.png" class="img-responsive"
+					<img src="" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
 				<button class="btn-block feeling" value="3">
-					<img src="api/resources/images/3.png" class="img-responsive"
+					<img src="" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
 				<button class="btn-block feeling" value="4">
-					<img src="api/resources/images/4.png" class="img-responsive"
+					<img src="" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
 			<div class="col-md-2 col-xs-2">
 				<button class="btn-block feeling" value="5">
-					<img src="api/resources/images/5.png" class="img-responsive"
+					<img src="" class="img-responsive"
 						alt="Smiley face">
 				</button>
 			</div>
@@ -103,7 +103,7 @@
 				
 		<button class="btn btn-success btn-block" id="add">Add results to database</button>
 			<br><br>
-			<h1 class="text-center"><a href="results">Back to results</a></h1><br><br>
+			<h1 class="text-center"><a href="/results ">Back to results</a></h1><br><br>
 				<button id="reset" class="btn btn-primary btn-block">Reset</button>
 			</div>
 			</div>
@@ -127,7 +127,6 @@
   Smile3 <input id="smile3field" type="text" " value="">
   Smile4 <input id="smile4field" type="text" " value="">
   Smile5 <input id="smile5field" type="text" " value="">
-
  
 </form>  
 				<button id=buttoninsert type="button">Click Me!</button>
@@ -152,16 +151,11 @@
 		
 </body>
 <script>
-
-
-
 //Make values that can be called
 var pageurl = "/votes";
 var data = "";
-
 //adds values to tbody
 $.getJSON(pageurl, function(result) {
-
 	$.each(result, function(i, field) {
 		// artistlist.push(field);
 		console.log('smile1: ' + field.smile1 + ' smile2: ' + field.smile2 + ' smile3: '
@@ -416,7 +410,7 @@ $(document).ready(function() {
 								};
 
 								$.ajax({
-									url : "addresult",
+									url : "/votes",
 									data : JSON.stringify(json),
 									type : "POST",
 
@@ -427,7 +421,8 @@ $(document).ready(function() {
 												"application/json");
 									}
 								});
-
+								console.log('Success: ' + "data added");
+//								console.log(JSON.stringify(data));
 								alert("results added to database");
 							});
 

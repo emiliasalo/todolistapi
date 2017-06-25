@@ -39,6 +39,49 @@ var VoteSchema = new Schema({
     enum: ['1', '2', '3', '4','5']
 	  }],
   },
+  
+  feeling1: {
+	    type: Object,
+		
+	  },
+	  feeling2: {
+		    type: Object,
+			
+		  },
+		  feeling3: {
+			    type: Object,
+				
+			  },
+			  feeling4: {
+				    type: Object,
+					
+				  },
+				  feeling5: {
+					    type: Object,
+						
+					  },
+					  average: {
+						    type: Number,
+							
+						  },
+						  votes: {
+							    type: Number,
+								
+							  },
+						  name: {
+							    type: String,
+								
+							  },
+							  pvm: {
+								    type: Date,
+									
+								  },
+
+	  
+	  
+
+  
+  
 });
 
 
