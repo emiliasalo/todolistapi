@@ -29,6 +29,24 @@ var express = require('express'),
 	var routes = require('./api/routes/todoListRoutes');
 	routes(app);
 	
+	//////direct to pictures 1 - 5
+	app.get('/images1', function(req, res){
+		res.sendFile(__dirname + '/api/resources/images/1.png');
+	});
+	app.get('/images2', function(req, res){
+		res.sendFile(__dirname + '/api/resources/images/2.png');
+	});
+	app.get('/images3', function(req, res){
+		res.sendFile(__dirname + '/api/resources/images/3.png');
+	});
+	app.get('/images4', function(req, res){
+		res.sendFile(__dirname + '/api/resources/images/4.png');
+	});
+	app.get('/images5', function(req, res){
+		res.sendFile(__dirname + '/api/resources/images/5.png');
+	});
+	
+	
 	//direct to index
 	app.get('/', function(req, res){
 		res.sendFile(__dirname + '/index.html');
