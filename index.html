@@ -16,7 +16,22 @@
 	<script src="api/resources/js/main.js"></script>
 	<script src="api/resources/js/jquery-1.12.0.min.js"></script>
 	pathing dont work -->	
+<style>
 
+.btn {
+	height: 200px;
+	width: 200px;
+
+}
+
+.resultbutton {
+	padding-left: ;
+	margin-left: ;
+}
+
+
+
+</style>
 </head>
 <body>
 
@@ -30,7 +45,7 @@
 		</div>
 		
 		<div id="emptyspace">
-			<h1 id="thanks" class="text-center">Give a grade!</h1>
+			<h1 id="thanks" class="text-center"></h1>
 		</div>
 		<br>
 
@@ -91,21 +106,31 @@
 
 
 
-		<div class="row">
-			<div class="col-md-6 col-xs-10 col-md-offset-3 col-xs-offset-1">
-				<button id="results" class="btn btn-primary btn-block">Show results</button>
+		<div class="row" text-align="left">
+			<div class="col-md-4 col-xs-10 col-md-offset-4 col-xs-offset-1">
+				
 
 				<h2 id="result" class="text-center"></h2>
 
-				<br> <br> <br> <br> <br> <br> <br>
-				<br> <br> <br> <br> <br> <br> <br>
-				<br>
 				
-		<button class="btn btn-success btn-block" id="add">Add results to database</button>
-			<br><br>
-			<h1 class="text-center"><a href="/results ">Back to results</a></h1><br><br>
-				<button id="reset" class="btn btn-primary btn-block">Reset</button>
-			</div>
+				</div>
+				<!-- BUTTONS -->
+				<br><br><br><br><br><br><br><br><br><br><br>
+				<br><br><br><br><br><br>
+		
+		<div style="padding-left: 5%" class="container">		
+<div class="row">
+  <div class="col-md-3 resultbutton"><button id="results" class="btn btn-primary btn-block">Show results</button>
+</div>
+  <div class="col-md-3 resultbutton"><button class="btn btn-success btn-block" id="add">Add results to database</button>
+</div>
+ <div class="col-md-3 resultbutton"><button id="reset" class="btn btn-primary btn-block">Reset</button>
+</div>
+<div class="col-md-3 resultbutton"><button id="reset" class="btn btn-primary btn-block" onclick="location.href='/results';">Results</button>
+</div>
+</div>
+		</div>		
+		
 			</div>
 			<!-- row ends -->
 
@@ -120,100 +145,13 @@
 
 
 <!-- original code below -->
-							<form>
-  
-  Smile1 <input id="smile1field" type="text" " value="">
-  Smile2 <input id="smile2field" type="text" " value="">
-  Smile3 <input id="smile3field" type="text" " value="">
-  Smile4 <input id="smile4field" type="text" " value="">
-  Smile5 <input id="smile5field" type="text" " value="">
- 
-</form>  
-				<button id=buttoninsert type="button">Click Me!</button>
-		
-	
-	<table class="table" id="smileytable">
-					<thead>
-						<tr>
-							
-							<th>Smile1:</th>
-							<th>Smile2:</th>
-							<th>Smile3:</th>
-							<th>Smile4:</th>
-							<th>Smile5:</th>
-						</tr>
-					</thead>
-					<tbody>
-						
-					</tbody>
-				</table>
-				
-		
+
 </body>
 <script>
-//Make values that can be called
-var pageurl = "/votes";
-var data = "";
-//adds values to tbody
-$.getJSON(pageurl, function(result) {
-	$.each(result, function(i, field) {
-		// artistlist.push(field);
-		console.log('smile1: ' + field.smile1 + ' smile2: ' + field.smile2 + ' smile3: '
-				+ field.smile3 + ' smile4: ' + field.smile4 + ' smile5: ' + field.smile5);
-		console.log(JSON.stringify(field));
-		data += "<tr>";
-		data += "<td>" + field.smile1 + "</td>";
-		data += "<td>" + field.smile2 + "</td>";
-		data += "<td>" + field.smile3 + "</td>";
-		data += "<td>" + field.smile4 + "</td>";
-		data += "<td>" + field.smile5 + "</td>";
 
-		data += "</tr>";
-	});
-	$("tbody").html(data);
-})
+var buttons = document.getElementById("feeling");
+buttons.innerHTML = '<img src="api/resources/images/1.png">';
 
-//AJAX method (creates "ajaxRequest" function which lets you access the data)
-
-function ajaxRequests(data, type, callback) {
-	$.ajax({
-		url : '/votes',
-		data : JSON.stringify(data),
-		contentType : 'application/json',
-		type : type,
-		success : callback(),
-		error : function(xhr, status, error) {
-			console.log('Error: ' + error);
-		},
-	});
-}
-
-//inserts given data into the table
-$("#buttoninsert").click(function() {
-	var smile1 = $('#smile1field').val();
-	var smile2 = $('#smile2field').val();
-	var smile3 = $('#smile3field').val();
-	var smile4 = $('#smile4field').val();
-	var smile5 = $('#smile5field').val();
-	// alert(name);
-	var data = {
-		"smile1" : smile1,
-		"smile2" : smile2,
-		"smile3" : smile3,
-		"smile4" : smile4,
-		"smile5" : smile5,
-		
-	};
-
-	ajaxRequests(data, 'POST', function() {
-//		if(data !== data){
-//			console.log('Data not stored');
-//		}else{
-		console.log('Success: ' + "data added")
-		console.log(JSON.stringify(data));
-//		}
-	});
-});
 
 //SMILEAPPLICATION CODE BELOW
 
@@ -227,7 +165,12 @@ $(document).ready(function() {
 						var name = prompt("Name of the class:", "");
 						setCookie("askcookie", 1, 365);
 						setCookie("namecookie", name, 365);
+						
+						//sets the lecture name as a heading
+						$("#thanks").html(name);
 					}
+					
+					
 
 					// initial values
 					var allpoints = 0;
@@ -292,7 +235,7 @@ $(document).ready(function() {
 										$("#thanks").css({
 											"font-weight" : "bold",
 											"font-size" : "80px",
-											"color" : "red"
+											"color" : "green"
 										});
 
 										average = allpoints / votes;
@@ -339,7 +282,7 @@ $(document).ready(function() {
 					function changeText() {
 
 						$("#thanks").fadeOut(function() {
-							$(this).text("Give grade!").fadeIn("fast");
+							$(this).text(name).fadeIn("fast");
 							$("#thanks").css({
 								"font-weight" : "normal",
 								"font-size" : "40px",
@@ -436,7 +379,7 @@ $(document).ready(function() {
 					$('#add').click(
 							function() {
 								var date = new Date();
-								var pvm = date.getFullYear() + "-"
+								var date = date.getFullYear() + "-"
 										+ (date.getMonth() + 1) + "-"
 										+ date.getDate();
 
@@ -449,7 +392,7 @@ $(document).ready(function() {
 									"average" : average,
 									"votes" : votes,
 									"name" : name,
-									"pvm" : pvm
+									"date" : date
 								};
 
 								$.ajax({

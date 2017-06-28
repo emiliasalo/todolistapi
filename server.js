@@ -38,6 +38,8 @@ var express = require('express'),
 		res.sendFile(__dirname + '/results.html');
 	});
 	
+//	app.use('/main', express.static('api/resources/main.js'));
+	
 app.listen(port);
 
 app.use(function(req, res) {

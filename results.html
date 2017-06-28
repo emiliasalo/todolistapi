@@ -136,7 +136,7 @@ tr {
             <!-- Brand and toggle get grouped for better mobile display -->
             <div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/">Front page</a></li>
+						<li><a href="/">Frontpage</a></li>
 						
 					</ul>
 					<!--Links on the right side-->
@@ -205,7 +205,7 @@ $("#loadbutton").click(function() {
 		$.each( data, function( key, val ) {
 			//add data to list
 			//name to list	
-			tableData += '<tr><td>'+val.feeling1+'</td><td>'+val.feeling2+'</td><td>'+val.feeling3+'</td><td>'+val.feeling4+'</td><td>'+val.feeling5+'</td><td>'+val.average+'</td><td>'+val.votes+'</td><td>'+val.name+'</td><td>'+val.pvm+'</td></tr>';
+			tableData += '<tr><td>'+val.feeling1+'</td><td>'+val.feeling2+'</td><td>'+val.feeling3+'</td><td>'+val.feeling4+'</td><td>'+val.feeling5+'</td><td>'+val.average+'</td><td>'+val.votes+'</td><td>'+val.name+'</td><td>'+val.date+'</td></tr>';
 		//	$("<h2/>").text(val.id + " " +val.feeling1 + " " +val.feeling2 + " " +val.feeling3 + " " +val.feeling4 + " " +val.feeling5 + " " +val.average + " " +val.votes + " " +val.namei + " " +val.pvm + " ").appendTo(feels);
 			$('#list').html(tableData);
 		});
@@ -225,7 +225,7 @@ $("#new").click(function() {
 	setCookie("allpointscookie", 0,
 			365);
 	setCookie("namecookie", 0, 365);
-	window.location.replace("feeling");
+	window.location.replace("/");
 });
 function setCookie(cname, cvalue, exdays) {
 	var d = new Date();
