@@ -36,7 +36,7 @@ $("#new").click(function() {
 	setCookie("points5cookie", 0, 365);
 	setCookie("allpointscookie", 0,
 			365);
-	setCookie("namecookie", 0, 365);
+	setCookie("namecookie", "", 365);
 	window.location.replace("/");
 });
 function setCookie(cname, cvalue, exdays) {

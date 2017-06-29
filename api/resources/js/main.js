@@ -2,19 +2,7 @@
 
 $(document).ready(function() {
 	
-					var name = "";
-					var ask = 0;
-					ask = getCookie("askcookie");
-
-					if (ask != 1) {
-						var name = prompt("Name of the class:", "");
-						setCookie("askcookie", 1, 365);
-						setCookie("namecookie", name, 365);
-						
-						//sets the lecture name as a heading
-						$("#thanks").html(name);
-					}
-					
+			
 					
 
 					// initial values
@@ -211,6 +199,7 @@ $(document).ready(function() {
 					function getCookie(cname) {
 						var name = cname + "=";
 						var ca = document.cookie.split(';');
+					    var decodedCookie = decodeURIComponent(document.cookie);
 						for (var i = 0; i < ca.length; i++) {
 							var c = ca[i];
 							while (c.charAt(0) == ' ')
