@@ -175,15 +175,15 @@ $(document).ready(function() {
 														+ votes
 														+ "<br><br> Average of the grades: "
 														+ average
-														+ "<br> <br> Grade 1 votes: "
-														+ points1
-														+ "<br> Grade 2 votes: "
+														+ "<br> <br> <text style='color: red;'>Red: </text>"
+														+ points1 
+														+ "<br> <text style='color: orange;'>Orange: </text>"
 														+ points2
-														+ "<br> Grade 3 votes: "
+														+ "<br> <text style='color: #E7E309;'>Yellow: </text>"
 														+ points3
-														+ "<br> Grade 4 votes: "
+														+ "<br> <text style='color: #34DF0E;'>Light green: </text>"
 														+ points4
-														+ "<br> Grade 5 votes: "
+														+ "<br> <text style='color: green;'>Green: </text>"
 														+ points5);
 									});
 					
