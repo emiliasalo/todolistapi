@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit1",
     "success_url": "/index",
-    "start": "nodemon server.js"
+    "start": "npm start"
   },
   "keywords": [
     "RESTful"
