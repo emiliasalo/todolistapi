@@ -8,6 +8,7 @@ var express = require('express'),
 	// ES6 Promises
 	mongoose.Promise = global.Promise;
 	
+	
 	//mlab
 	var URLmongodb = 'mongodb://Leo:123@ds135522.mlab.com:35522/smileydb';
 
