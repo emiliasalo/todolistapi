@@ -14,13 +14,14 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.js"></script>
 
-<!-- Bootstrap core CSS -->
-
+<!-- own scripts -->
+<!-- pathing made with server.js -->
+<script src="/results.js"</script>
 
 
 <!-- Custom styles for this template -->
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="api/resources/js/jquery-1.12.0.min.js"></script>
 <style>
 h1 {
@@ -48,7 +49,7 @@ padding:15px;
 border: 1px solid black; 
 display: block;
 }
-table {
+/** table {
 	
 	border-collapse: separate;
 	
@@ -57,13 +58,8 @@ table {
 	margin: 30px auto;
 	text-align: center;
 	width: 350px;
-}
-.profile table {
-	text-align: left;
-	width:100%;
-	border-style: solid;
-	border-width: 1px;
-}	
+} **/
+
 th {
 	background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
 	border-left: 1px solid #555;
@@ -97,9 +93,7 @@ tr {
 {
     text-align: left !important;
 }
-.profile{
-	width:300px;
-}
+
 .button {
     background-color: #008CBA; 
     border: 2px solid;
@@ -124,6 +118,26 @@ tr {
 	
 	
 }	
+
+.btn {
+	height: 200px;
+	width: 200px;
+
+}
+
+.resultbutton {
+	padding-left: ;
+	margin-left: ;
+}
+
+#fp {
+	color: white;
+}
+
+#fp:hover {
+	color: gray;
+	}
+
 	
 	
 </style>
@@ -135,13 +149,11 @@ tr {
             <!-- Brand and toggle get grouped for better mobile display -->
             <div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/">Frontpage</a></li>
+						<li><a id="fp" href="/">Frontpage</a></li>
 						
 					</ul>
 					<!--Links on the right side-->
 					<ul class="nav navbar-nav navbar-right">
-					<li><a>Logged in: <sec:authentication property="principal.username"/></a> </li>
-					<li> <a href="../j_spring_security_logout"> Log out</a></li>
 				
 					</ul>
 				</div>
@@ -152,87 +164,29 @@ tr {
     <div class="container">
 <br>
 <br>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-<h1 class="text-center"><a href="admin/tools">Admin tools</a></h1>
-</sec:authorize>
+<h1 class="text-center">Results page</h1>
+
 <br>
-<h1>Profile</h1>
-<div class="profile">
-<table>
-<tr>
-<td>Username</td>
-<td><sec:authentication property="principal.username"/></td>
-</tr>
-<tr>
-<td>Amount of graded lectures:</td>
-<td><c:out value="${amount}"/></td>
-</tr>
-<tr>
-<td>Latest graded lecture:</td>
-<td><c:out value="${latest}"/></td>
-</tr>
-</table>
-</div> <!-- /.profile -->
-<button type="button" class="btn btn-primary btn-block" id="new">Add new lecture</button>
-<br>
+<div style="padding-left: 10%" class="container">		
 <div class="row">
-  <div class="col-md-6"><button class="btn btn-success btn-block testbutton"id="loadbutton">Show all lectures</button></div>
-  <div class="col-md-6"><button class="btn btn-success btn-block" id="emptybutton" >Hide lectures</button></div>
+  <div class="col-md-4 resultbutton"><button id="loadbutton" class="btn btn-success btn-block">Show all lectures</button>
 </div>
+  <div class="col-md-4 resultbutton"><button class="btn btn-success btn-block" id="emptybutton">Hide all lectures</button>
+</div>
+ <div class="col-md-4 resultbutton"><button id="new" class="btn btn-primary btn-block">Start new lecture</button>
+</div>
+</div>
+		</div>
+		
 <br>
-<div id="list"></div>
+
+
+<table class="table table-bordered table-striped" id="list"></table>
 			
 </div>
 		<!-- /container -->
 <script>
-//when document loads, the event listeners are activated
-$(document).ready(function(){
-	
-	setCookie("askcookie", 0, 365);
-	//when button to empty list is clicked
-	$("#emptybutton").click(function() {
-		$("#list").empty();
-	});
-	
-	
-$("#loadbutton").click(function() {
-	
-	var pageurl = "/votes";
-	//load JSON-data from server
-	$.getJSON(pageurl, function( data ) {
-		var tableData = '<table><tr><th>Feeling1</th><th>Feeling2</th><th>Feeling3</th><th>Feeling4</th><th>Feeling5</th><th>Average</th><th>Votes</th><th>Lecture name</th><th>Date</th></tr>';
-		$.each( data, function( key, val ) {
-			//add data to list
-			//name to list	
-			tableData += '<tr><td>'+val.feeling1+'</td><td>'+val.feeling2+'</td><td>'+val.feeling3+'</td><td>'+val.feeling4+'</td><td>'+val.feeling5+'</td><td>'+val.average+'</td><td>'+val.votes+'</td><td>'+val.name+'</td><td>'+val.date+'</td></tr>';
-		//	$("<h2/>").text(val.id + " " +val.feeling1 + " " +val.feeling2 + " " +val.feeling3 + " " +val.feeling4 + " " +val.feeling5 + " " +val.average + " " +val.votes + " " +val.namei + " " +val.pvm + " ").appendTo(feels);
-			$('#list').html(tableData);
-		});
-	}).error(function() { //error in connection to server
-		$("<p class='Error'>Error: Server does not return JSON data. Check database connection.</p>").appendTo("#list");
-	});
-	
-});
-$("#new").click(function() {
-	setCookie("averagecookie", 0, 365);
-	setCookie("votescookie", 0, 365);
-	setCookie("points1cookie", 0, 365);
-	setCookie("points2cookie", 0, 365);
-	setCookie("points3cookie", 0, 365);
-	setCookie("points4cookie", 0, 365);
-	setCookie("points5cookie", 0, 365);
-	setCookie("allpointscookie", 0,
-			365);
-	setCookie("namecookie", 0, 365);
-	window.location.replace("/");
-});
-function setCookie(cname, cvalue, exdays) {
-	var d = new Date();
-	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-	var expires = "expires=" + d.toUTCString();
-	document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-});
+<!-- results.js -->
 </script>
 	<!-- Bootstrap core JavaScript
     ================================================== -->

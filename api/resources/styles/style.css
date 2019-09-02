@@ -23,9 +23,9 @@ height:100px;
 }
 
 #sininenboxi{
-	background-color:rgba(0,0,255,1); /* Laatikon taustalle väri ja läpinäkyvyys */
+	background-color:rgba(0,0,255,1); /* Laatikon taustalle vï¿½ri ja lï¿½pinï¿½kyvyys */
 padding:15px;
-border: 1px solid black; /* Reunuksen väri */
+border: 1px solid black; /* Reunuksen vï¿½ri */
 display: block;
 }
 
@@ -114,6 +114,16 @@ tr {
     border: 2px solid #008CBA;
 }
 
+.btn {
+	
+	height: 200px;
+	width: 200px;
+}
+
+.resultbutton {
+	padding-left: ;
+	margin-left: ;
+}
 
 .testinappula {
 	

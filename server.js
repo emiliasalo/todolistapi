@@ -1,12 +1,13 @@
 var express = require('express'),
   	app = express(),
-  	port = process.env.PORT || 3000;
+  	port = process.env.PORT || 5000;
 	mongoose = require('mongoose'),
 	Vote = require('./api/models/todoListModel'),
 	bodyParser = require('body-parser');
 	
 	// ES6 Promises
 	mongoose.Promise = global.Promise;
+	
 	
 	//mlab
 	var URLmongodb = 'mongodb://Leo:123@ds135522.mlab.com:35522/smileydb';
@@ -46,7 +47,18 @@ var express = require('express'),
 		res.sendFile(__dirname + '/api/resources/images/5.png');
 	});
 	
-	
+	//direct to css
+	app.get('/css', function(req, res){
+		res.sendFile(__dirname + '/api/resources/styles/style.css');
+	});
+	//direct to main.js
+	app.get('/main.js', function(req, res){
+		res.sendFile(__dirname + '/api/resources/js/main.js');
+	});
+	//direct to results.js
+	app.get('/results.js', function(req, res){
+		res.sendFile(__dirname + '/api/resources/js/results.js');
+	});
 	//direct to index
 	app.get('/', function(req, res){
 		res.sendFile(__dirname + '/index.html');
